@@ -9,7 +9,7 @@ def repeat_all_messages(message):
 	if message.text == "/start": 
 		bot.send_message(message.chat.id, "message.text")
 
-	elif message.text == "uptime":  
+	elif "uptime" in message.text:   
 		f = os.popen('uptime').read()
 		bot.send_message(message.chat.id, f)
 
@@ -17,7 +17,7 @@ def repeat_all_messages(message):
 		ssh = message.text.replace("/ssh", "") 
 		f = os.popen(ssh).read()
 		bot.send_message(message.chat.id, f)
-		
+
 	else:
 		bot.send_message(message.chat.id, message.text)
 
