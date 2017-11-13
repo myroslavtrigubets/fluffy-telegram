@@ -28,8 +28,15 @@ def commands(message):
 			ssh = message.text.replace("/ssh", "") 
 			f = os.popen(ssh).read()
 			bot.send_message(message.chat.id, f)
-
-		elif message.text == "/temp" : 
+'''
+		elif "/screenshot" in message.text:
+			now = datetime.datetime.today()
+			name = now.strftime("%Y-%m-%d-%H.%M.%S")
+			f = os.popen("scrot -b '"+name+".png' -e 'mv $f /home/pi/Pictures/PiRobot'")
+			bot.send_photo(message.chat.id, open('/home/pi/Pictures/PiRobot/'+name+'.png', 'rb'))
+			bot.send_message(message.chat.id, name)
+'''
+		elif "/temp" in message.text: 
 			f = os.popen("vcgencmd measure_temp").read()
 			bot.send_message(message.chat.id, f)
 
