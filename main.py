@@ -37,6 +37,12 @@ def commands(message):
 			web = webcamera()
 			bot.send_photo(message.chat.id, open('/home/pi/Project/fluffy-telegram/cam.jpg', 'rb'))
 			os.remove('/home/pi/Project/fluffy-telegram/cam.jpg')
+		elif "/StartMusic" in message.text: 
+			bot.send_message(message.chat.id, "Start...")
+			os.system("mpg123 /home/pi/Music/*.mp3")
+		elif "/StopMusic" in message.text: 
+			os.system("pkill mpg123")
+			bot.send_message(message.chat.id, "Stop Music.")
 		else:
 			bot.send_message(message.chat.id, message.text)
 
